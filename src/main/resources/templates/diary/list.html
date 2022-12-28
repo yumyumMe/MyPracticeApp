@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"/>
+</head>
+<body>
+  <div class="container">
+    <h1>学習日記一覧</h1>
+    <div class="float-end">
+      <a th:href="@{/diary/register}" class="btn btn-primary">新規登録はこちら</a>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>タイトル</th>
+          <th>内容</th>
+          <th>開始時刻</th>
+          <th>終了時刻</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="list : ${diaryList}" class="align-middle">
+          <td th:text="${list.id}"></td>
+          <td th:text="${list.title}"></td>
+          <td th:text="${list.content}"></td>
+          <td th:text="${list.start_date}"></td>
+          <td th:text="${list.end_date}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

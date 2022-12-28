@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"/>
+</head>
+<body>
+  <div class="container">
+    <h1>学習日記登録</h1>
+    <div th:if="${errorList}" th:each="error : ${errorList}">
+        <label class="text-danger" th:text="${error}"></label>
+    </div>
+    <div class="float-end">
+      <a th:href="@{/diary}" class="btn btn-primary">一覧に戻る</a>
+    </div>
+    <form th:action="@{/diary/confirm}" th:object="${diaryRequest}" th:method="post">
+        <div class="form-group">
+            <label>タイトル：</label>
+            <input type="text" th:field="*{title}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>内容：</label>
+            <input type="text" th:field="*{content}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>開始時刻：</label>
+            <input type="time" th:field="*{start_date}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>終了時刻：</label>
+            <input type="time" th:field="*{end_date}" class="form-control">
+        </div>
+        <br />
+        <div class="text-center">
+            <a href="/diary/register" class="btn btn-secondary">キャンセル</a>
+            <input type="submit" value="書き込む" class="btn btn-primary">
+        </div>
+    </form>
+    </div>
+</body>
+</html>
